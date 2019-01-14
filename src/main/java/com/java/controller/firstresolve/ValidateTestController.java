@@ -73,8 +73,8 @@ public class ValidateTestController {
      * @return
      */
     @RequestMapping(value = "/validate/validateObject4")
-    public String validateObject4( @RequestParam String name) {
-        return name;
+    public String validateObject4( @RequestParam String name, @RequestParam Integer age) {
+        return name + age;
     }
 
 

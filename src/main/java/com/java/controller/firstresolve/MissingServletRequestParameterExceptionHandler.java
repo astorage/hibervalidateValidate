@@ -24,14 +24,12 @@ public class MissingServletRequestParameterExceptionHandler {
      */
     @ExceptionHandler(MissingServletRequestParameterException.class)
     @ResponseStatus(HttpStatus.OK)
-    public DataResult bindException(BindException e) {
-        BindingResult bindingResult = e.getBindingResult();
+    public DataResult bindException(MissingServletRequestParameterException e) {
+        String paramName = e.getParameterName();
 
         String errorMesssage = "校验失败:";
 
-        for (FieldError fieldError : bindingResult.getFieldErrors()) {
-            errorMesssage += fieldError.getDefaultMessage() + ", ";
-        }
+       errorMesssage += paramName + "不能为空！";
 
         return new DataResult("00000011", errorMesssage);
     }
